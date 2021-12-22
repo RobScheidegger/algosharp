@@ -66,7 +66,7 @@ public class IntegerArrayCountingTests
 
         Assert.Single(result);
         Assert.Equal(3, result.First());
-        analyzer.PrintResults();
+        
 
     }
 }

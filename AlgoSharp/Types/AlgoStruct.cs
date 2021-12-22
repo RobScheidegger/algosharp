@@ -95,6 +95,12 @@ public class AlgoStruct<T> : IComparable<T> where T : IComparable<T>
 
         return s1.Value?.CompareTo(s2) != 0;
     }
+    /// <summary>
+    /// Determines whether two AlgoStructs are equal by comparing their inner values.
+    /// </summary>
+    /// <param name="s1"></param>
+    /// <param name="s2"></param>
+    /// <returns></returns>
     public static bool operator ==(AlgoStruct<T> s1, AlgoStruct<T> s2)
     {
         var analyzer = s1.analyzer;
@@ -120,7 +126,14 @@ public class AlgoStruct<T> : IComparable<T> where T : IComparable<T>
 
         return new AlgoStruct<T>(value, analyzer);
     }
-
+    public static AlgoStruct<T> operator ++(AlgoStruct<T> s)
+    {
+        dynamic startingValue = s.Value;
+        s.analyzer.Count(1, "Addition");
+        dynamic result = startingValue + 1;
+        s.Value = result;
+        return s;
+    }
     public int CompareTo(T? other)
     {
         return this.Value.CompareTo(other);

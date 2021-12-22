@@ -8,16 +8,32 @@ namespace AlgoSharp;
 
 public class AlgoAnalysis
 {
-    public int ParameterCount { get; set; }
+    /// <summary>
+    /// The name of the category that this analysis represents.
+    /// </summary>
+    public string Name { get; set; }
+    /// <summary>
+    /// The found runtime of the algorithm (given in Big-O notation).
+    /// </summary>
     public string Runtime { get; set; }
-    public Delegate RuntimeExpression { get; set; }
-    public int ComputeOperations(params int[] parameters)
-    {
-        return (int)RuntimeExpression.DynamicInvoke(parameters);
-    }
+    /// <summary>
+    /// A measure of how confident that we are that the algorithm does in fact have this runtime.
+    /// </summary>
+    public double Confidence { get; set; }
+    /// <summary>
+    /// The leading coefficient on the Big-O term.
+    /// </summary>
+    public double Coefficient { get; set; }
+    /// <summary>
+    /// List of sub categories of the relevant analysis.
+    /// </summary>
+    public IEnumerable<AlgoAnalysis> SubCategories { get; set; }
     public bool IsLinear()
     {
-        if (ParameterCount != 1) throw new NotImplementedException("IsLinear only defined for single variable functions.");
         return Runtime == "O(n)";
+    }
+    public bool IsQuadratic()
+    {
+        return Runtime == "O(n^2)";
     }
 }

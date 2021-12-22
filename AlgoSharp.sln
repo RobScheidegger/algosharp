@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoSharp", "AlgoSharp\AlgoSharp.csproj", "{FE5EA5D5-BBB6-456C-9830-8ECBB3C5CEFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgoSharp", "AlgoSharp\AlgoSharp.csproj", "{FE5EA5D5-BBB6-456C-9830-8ECBB3C5CEFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoSharp.Tests", "AlgoSharp.Tests\AlgoSharp.Tests.csproj", "{E94F882C-A31D-4DE7-98B0-4058EB0A4692}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgoSharp.Tests", "AlgoSharp.Tests\AlgoSharp.Tests.csproj", "{E94F882C-A31D-4DE7-98B0-4058EB0A4692}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{384C454A-CAB2-4A22-BC48-8952CB9520E5}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoSharp.Example", "AlgoSharp.Example\AlgoSharp.Example.csproj", "{99B7D1B3-1EFE-4613-9EAB-CD9579D60B59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +28,10 @@ Global
 		{E94F882C-A31D-4DE7-98B0-4058EB0A4692}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E94F882C-A31D-4DE7-98B0-4058EB0A4692}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E94F882C-A31D-4DE7-98B0-4058EB0A4692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B7D1B3-1EFE-4613-9EAB-CD9579D60B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B7D1B3-1EFE-4613-9EAB-CD9579D60B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B7D1B3-1EFE-4613-9EAB-CD9579D60B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B7D1B3-1EFE-4613-9EAB-CD9579D60B59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
