@@ -36,4 +36,12 @@ public class AlgoAnalysis
     {
         return Runtime == "O(n^2)";
     }
+    public bool IsLogarithmic()
+    {
+        return Runtime == "O(log n)";
+    }
+    public override string ToString()
+    {
+        return $"{Name} - {Runtime}";
+    }
 }

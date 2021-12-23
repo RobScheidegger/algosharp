@@ -9,9 +9,10 @@ using AlgoSharp.Types;
 
 namespace AlgoSharp.Tests.CountingTests;
 
-public class IntegerArrayCountingTests
+public class IntegerArrayCounting
 {
-    private readonly AlgoAnalyzer analyzer;
+    private readonly AlgoAnalyzer analyzer = new AlgoAnalyzer();
+    private readonly Random random = new Random();
     /// <summary>
     /// 
     /// </summary>
@@ -34,12 +35,12 @@ public class IntegerArrayCountingTests
                     input[startIndex] = n;
                     nextIndex = value;
                 }
-                startIndex = startIndex + 1;
+                startIndex++;
             }
             else if(input[nextIndex] > (n - 1))
             {
                 // Been here before
-                input[nextIndex] = input[nextIndex] + 1;
+                input[nextIndex]++;
                 nextIndex = analyzer.Get(-1);
             }
             else
@@ -50,23 +51,36 @@ public class IntegerArrayCountingTests
                 nextIndex = value;
             }
         }
-        for(var i = analyzer.Get(0); i < n; i = i + 1)
+        for(var i = analyzer.Get(0); i < n; i++)
         {
             input[i] = input[i] - n;
         }
         return input;
     }
     [Fact]
-    public void CountsDoubleCaseCorrectly()
+    public void CountsCorrectly()
     {
+        analyzer.ResetCounts();
+
         var arr = new int[] { 3, 2, 3, 0, 3, 0, 1, 3};
         var input = analyzer.GetArray(arr);
 
         var result = ComputeOccurances(input);
 
-        Assert.Single(result);
-        Assert.Equal(3, result.First());
-        
+        Assert.Equal(new int[] { 2, 1, 1, 4, 0, 0, 0, 0 }, result.ToArray());
+    }
 
+    [Fact]
+    public void RecognizesLinear()
+    {
+        analyzer.ResetCounts();
+
+        Func<int, object> inputGenerator = n => new AlgoArray<int>(
+            Enumerable.Range(0, n).Select(i => random.Next(0, n)), 
+            analyzer);
+
+        var result = analyzer.Analyze(ComputeOccurances, inputGenerator);
+
+        Assert.True(result.IsLinear(), "Expected the result to be linear.");
     }
 }

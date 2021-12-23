@@ -22,13 +22,38 @@ public class RuntimeRegressionAnalyzer
         },
         new RuntimeDefinition()
         {
+            Name = "log n",
+            Transformation = n => Math.Log(n)
+        },
+        new RuntimeDefinition()
+        {
             Name = "n",
             Transformation = n => n
         },
         new RuntimeDefinition()
         {
+            Name = "n log n",
+            Transformation = n => n * Math.Log(n)
+        },
+        new RuntimeDefinition()
+        {
             Name = "n^2",
             Transformation = n => n * n
+        },
+        new RuntimeDefinition()
+        {
+            Name = "n^2 log n",
+            Transformation = n => n * n * Math.Log(n)
+        },
+        new RuntimeDefinition()
+        {
+            Name = "n^3",
+            Transformation = n => n * n * n
+        },
+        new RuntimeDefinition()
+        {
+            Name = "n^4",
+            Transformation = n => n * n * n * n
         }
     };
 
@@ -62,7 +87,9 @@ public class RuntimeRegressionAnalyzer
                 {
                     Name = definition.Name,
                     Transformation = definition.Transformation,
-                    RSquared = rsquared
+                    RSquared = rsquared,
+                    Coefficient = m,
+                    Category = detailName ?? "Overall Runtime"
                 };
             });
             return regressionResults.OrderByDescending(j => j.RSquared).First();

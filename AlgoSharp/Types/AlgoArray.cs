@@ -78,17 +78,25 @@ namespace AlgoSharp.Types
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            for(int i = arrayIndex; i < array.Length;i++)
+            {
+                array[i] = this.array[i];
+            }
+            analyzer.Count(array.Length - arrayIndex, "Array Copy");
         }
 
         public void CopyTo(AlgoStruct<T>[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            for (int i = arrayIndex; i < array.Length; i++)
+            {
+                array[i] = new AlgoStruct<T>(this.array[arrayIndex], analyzer);
+            }
+            analyzer.Count(array.Length - arrayIndex, "Array Copy");
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return (IEnumerator<T>)array.GetEnumerator();
         }
 
         public int IndexOf(T item)
@@ -128,8 +136,7 @@ namespace AlgoSharp.Types
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.array.GetEnumerator();
         }
-
     }
 }

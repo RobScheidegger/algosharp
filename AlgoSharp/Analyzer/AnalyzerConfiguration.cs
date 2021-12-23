@@ -23,7 +23,7 @@ public class AnalyzerConfiguration
     /// <summary>
     /// The input size to end with.
     /// </summary>
-    public int InputMax { get; set; } = 1000;
+    public int InputMax { get; set; } = 100;
     /// <summary>
     /// Number of datapoints to use between the min and maximum inputs.
     /// </summary>

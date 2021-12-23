@@ -51,6 +51,14 @@ public class AlgoStruct<T> : IComparable<T> where T : IComparable<T>
 
         return new AlgoStruct<T>(value1 - s2, analyzer);
     }
+    public static AlgoStruct<T> operator /(AlgoStruct<T> s1, T s2)
+    {
+        dynamic value1 = s1.Value;
+        var analyzer = s1.analyzer;
+        analyzer.Count(1, "Additions");
+
+        return new AlgoStruct<T>(value1 / s2, analyzer);
+    }
     public static bool operator <(AlgoStruct<T> s1, AlgoStruct<T> s2)
     {
         if (s1.analyzer != s2.analyzer) throw new ArgumentException("AlgoStruct instances can only be added if they have the same analyzer.");
@@ -94,6 +102,14 @@ public class AlgoStruct<T> : IComparable<T> where T : IComparable<T>
         analyzer.Count(1, "Comparisons");
 
         return s1.Value?.CompareTo(s2) != 0;
+    }
+    public static bool operator <=(AlgoStruct<T> s1, AlgoStruct<T> s2)
+    {
+        return s1 == s2 || s1 < s2;
+    }
+    public static bool operator >=(AlgoStruct<T> s1, AlgoStruct<T> s2)
+    {
+        return s1 == s2 || s1 > s2;
     }
     /// <summary>
     /// Determines whether two AlgoStructs are equal by comparing their inner values.

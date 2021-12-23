@@ -32,7 +32,7 @@ public class AlgoAnalyzer
     public AlgoArray<T> GetArray<T>(IEnumerable<T> arr) where T : IEquatable<T>, IComparable<T> => new(arr, this);
     public AlgoStruct<T> Get<T>(T value = default) where T : IEquatable<T>, IComparable<T> => new(value, this);
     public void Configure(Action<AnalyzerConfiguration> action) => action(Configuration);
-    public AlgoAnalysis Analyze(Delegate algorithm, params Func<int, IEnumerable<object>>[] inputGenerators)
+    public AlgoAnalysis Analyze(Delegate algorithm, params Func<int, object>[] inputGenerators)
     {
         Algorithm = algorithm;
         ParameterCount = algorithm?.Method.GetParameters().Length ?? 0;
@@ -63,7 +63,7 @@ public class AlgoAnalyzer
             Name = i.Category,
             Runtime = i.Name
         });
-        // TODO: Get detail specific results.
+        
         return new AlgoAnalysis()
         {
             Runtime = $"O({generalRuntime.Name})",
