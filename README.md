@@ -35,7 +35,7 @@ The following is an example of analyzing the runtime differences of a naive uniq
 First, we perform a naive algorithm which just iterates through and compares each element of the list (expected `O(n^2)`) runtime:
 
 
-```
+```C#
 using AlgoSharp;
 using AlgoSharp.Types;
 
@@ -72,8 +72,7 @@ Which prints the expected result:
 
 We can then, in the same file try to analyze a better (rational) implementation using hash sets, and analyze it as well:
 
-```
-
+```C#
 /// <summary>
 /// Determines whether or not a list of integers has unique values (using a HashMap/Dictionary).
 /// </summary>
