@@ -19,7 +19,7 @@ public class IntegerArrayCounting
     /// <param name="input"></param>
     /// <param name="numberOfOccurances"></param>
     /// <returns></returns>
-    private AlgoArray<int> ComputeOccurances(AlgoArray<int> input)
+    private CountableArray<int> ComputeOccurances(CountableArray<int> input)
     {
         var n = analyzer.Get(input.Count);
         var nextIndex = analyzer.Get(-1);
@@ -75,7 +75,7 @@ public class IntegerArrayCounting
     {
         analyzer.ResetCounts();
 
-        Func<int, object> inputGenerator = n => new AlgoArray<int>(
+        Func<int, object> inputGenerator = n => new CountableArray<int>(
             Enumerable.Range(0, n).Select(i => random.Next(0, n)), 
             analyzer);
 

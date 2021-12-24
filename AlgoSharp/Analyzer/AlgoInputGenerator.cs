@@ -17,14 +17,14 @@ public class AlgoInputGenerator
     {
         generators = new()
         {
-            {typeof(AlgoArray<int>), ArrayIntGenerator}
+            {typeof(CountableArray<int>), ArrayIntGenerator}
         };
         this.analyzer = analyzer;
         random = new Random();
     }
-    AlgoArray<int> ArrayIntGenerator(int n)
+    CountableArray<int> ArrayIntGenerator(int n)
     {
-        return new AlgoArray<int>(
+        return new CountableArray<int>(
             Enumerable.Range(0, n).Select(i => random.Next(int.MaxValue)),
             analyzer);
     }

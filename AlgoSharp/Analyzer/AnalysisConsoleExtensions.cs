@@ -15,8 +15,10 @@ public static class AnalysisConsoleExtensions
     /// Prints a detailed report of the resultant analysis of an algorithm to the console.
     /// </summary>
     /// <param name="analysis">The analysis (from an AlgoAnalyzer) to be printed.</param>
-    public static void PrintDetailed(this AlgoAnalysis analysis)
+    public static void PrintDetailed(this AlgoAnalysis analysis, bool includeSubCategories = false)
     {
-
+        Console.WriteLine("{0, 25}: {1, 10}", "Overall Runtime", analysis.Runtime);
+        Console.WriteLine("{0, 25}: {1, 10}", "Confidence (0 to 1)", analysis.Confidence);
+        Console.WriteLine("{0, 25}: {1, 10}", "Estimated Coefficient", analysis.Coefficient);
     }
 }

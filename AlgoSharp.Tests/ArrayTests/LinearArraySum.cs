@@ -12,7 +12,7 @@ public class LinearArraySum
 {
     private AlgoAnalyzer analyzer;
     
-    int Sum(AlgoArray<int> array)
+    int Sum(CountableArray<int> array)
     {
         var total = analyzer.Get(0);
         for(var i = analyzer.Get(0); i < array.Count; i += 1)

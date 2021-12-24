@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace AlgoSharp.Types
 {
-    public class AlgoArray<T> : IList<T> where T : IEquatable<T>, IComparable<T>
+    public class CountableArray<T> : IList<T> where T : IEquatable<T>, IComparable<T>
     {
         private readonly AlgoAnalyzer analyzer;
         private T[] array;
-        public AlgoArray(int size, AlgoAnalyzer analyzer)
+        public CountableArray(int size, AlgoAnalyzer analyzer)
         {
             this.analyzer = analyzer;
             array = new T[size];
         }
-        public AlgoArray(IEnumerable<T> array, AlgoAnalyzer analyzer)
+        public CountableArray(IEnumerable<T> array, AlgoAnalyzer analyzer)
         {
             this.analyzer = analyzer;
             this.array = array.ToArray();
         }
-        public AlgoStruct<T> this[AlgoStruct<int> index] 
+        public Countable<T> this[Countable<int> index] 
         {   
             get 
             {
                 analyzer.Count(1, "Array Get");
-                return new AlgoStruct<T>(array[index.Value], analyzer);
+                return new Countable<T>(array[index.Value], analyzer);
             } 
             set  
             {
@@ -46,7 +46,7 @@ namespace AlgoSharp.Types
             throw new InvalidOperationException("Cannot add to a fixed size array.");
         }
 
-        public void Add(AlgoStruct<T> item)
+        public void Add(Countable<T> item)
         {
             throw new NotImplementedException();
         }
@@ -71,7 +71,7 @@ namespace AlgoSharp.Types
             return false;
         }
 
-        public bool Contains(AlgoStruct<T> item)
+        public bool Contains(Countable<T> item)
         {
             throw new NotImplementedException();
         }
@@ -85,11 +85,11 @@ namespace AlgoSharp.Types
             analyzer.Count(array.Length - arrayIndex, "Array Copy");
         }
 
-        public void CopyTo(AlgoStruct<T>[] array, int arrayIndex)
+        public void CopyTo(Countable<T>[] array, int arrayIndex)
         {
             for (int i = arrayIndex; i < array.Length; i++)
             {
-                array[i] = new AlgoStruct<T>(this.array[arrayIndex], analyzer);
+                array[i] = new Countable<T>(this.array[arrayIndex], analyzer);
             }
             analyzer.Count(array.Length - arrayIndex, "Array Copy");
         }
@@ -104,7 +104,7 @@ namespace AlgoSharp.Types
             throw new NotImplementedException();
         }
 
-        public int IndexOf(AlgoStruct<T> item)
+        public int IndexOf(Countable<T> item)
         {
             throw new NotImplementedException();
         }
@@ -114,7 +114,7 @@ namespace AlgoSharp.Types
             throw new NotImplementedException();
         }
 
-        public void Insert(int index, AlgoStruct<T> item)
+        public void Insert(int index, Countable<T> item)
         {
             throw new NotImplementedException();
         }
@@ -124,7 +124,7 @@ namespace AlgoSharp.Types
             throw new InvalidOperationException("Cannot remove elements from an array.");
         }
 
-        public bool Remove(AlgoStruct<T> item)
+        public bool Remove(Countable<T> item)
         {
             throw new NotImplementedException();
         }

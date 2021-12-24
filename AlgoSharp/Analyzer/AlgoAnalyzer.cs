@@ -28,9 +28,14 @@ public class AlgoAnalyzer
             Counts[descriptor] = operations;
     }
 
-    public AlgoArray<T> GetArray<T>(int size) where T : IEquatable<T>, IComparable<T> => new(size, this);
-    public AlgoArray<T> GetArray<T>(IEnumerable<T> arr) where T : IEquatable<T>, IComparable<T> => new(arr, this);
-    public AlgoStruct<T> Get<T>(T value = default) where T : IEquatable<T>, IComparable<T> => new(value, this);
+    public CountableArray<T> GetArray<T>(int size) where T : IEquatable<T>, IComparable<T> => new(size, this);
+    public CountableArray<T> GetArray<T>(IEnumerable<T> arr) where T : IEquatable<T>, IComparable<T> => new(arr, this);
+    public Countable<T> Get<T>(T value = default) where T : IEquatable<T>, IComparable<T> => new(value, this);
+    public CountableSet<T> GetSet<T>() where T : IEquatable<T>, IComparable<T> => new(this);
+    public CountableDictionary<T, S> GetDictionary<T, S>() 
+        where T : IEquatable<T>, IComparable<T>
+        where S : IEquatable<S>, IComparable<S>
+        => new(this);
     public void Configure(Action<AnalyzerConfiguration> action) => action(Configuration);
     public AlgoAnalysis Analyze(Delegate algorithm, params Func<int, object>[] inputGenerators)
     {

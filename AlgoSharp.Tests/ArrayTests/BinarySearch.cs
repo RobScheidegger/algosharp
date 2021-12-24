@@ -18,7 +18,7 @@ public class BinarySearchTests
     /// <param name="array"></param>
     /// <param name="key"></param>
     /// <returns></returns>
-    bool Contains(AlgoArray<int> array, AlgoStruct<int> key)
+    bool Contains(CountableArray<int> array, Countable<int> key)
     {
         var min = analyzer.Get(0);
         var max = analyzer.Get(array.Count) - 1;
@@ -45,8 +45,8 @@ public class BinarySearchTests
     public void RecognizesLog()
     {
         var key = analyzer.Get(9);
-        Func<AlgoArray<int>, bool> func = (a) => Contains(a, key);
-        Func<int, object> generator = n => new AlgoArray<int>(
+        Func<CountableArray<int>, bool> func = (a) => Contains(a, key);
+        Func<int, object> generator = n => new CountableArray<int>(
             Enumerable.Range(0, n).Select(i => Random.Shared.Next()).OrderBy(i => i),
             analyzer);
 
